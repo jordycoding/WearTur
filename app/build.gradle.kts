@@ -67,6 +67,8 @@ dependencies {
     val wear_compose_version = "1.2.0"
     implementation("androidx.wear.compose:compose-navigation:$wear_compose_version")
 
+    implementation("androidx.wear:wear-input:1.2.0-alpha02")
+
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
