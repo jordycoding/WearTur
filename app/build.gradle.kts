@@ -1,6 +1,13 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.apollographql.apollo3") version "3.8.2"
+}
+
+apollo {
+    service("service") {
+        packageName.set("com.example.weartur")
+    }
 }
 
 android {
@@ -68,6 +75,8 @@ dependencies {
     implementation("androidx.wear.compose:compose-navigation:$wear_compose_version")
 
     implementation("androidx.wear:wear-input:1.2.0-alpha02")
+
+    implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
 
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
