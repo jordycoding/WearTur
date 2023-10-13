@@ -28,6 +28,7 @@ import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.example.weartur.R
 import com.example.weartur.presentation.theme.WearTurTheme
 import com.example.weartur.presentation.ui.Home
+import com.example.weartur.presentation.ui.Search
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +50,12 @@ fun WearApp() {
         SwipeDismissableNavHost(navController = navController, startDestination = "home") {
             composable("home") {
                 Home(navController = navController)
+            }
+            composable("search") {
+                Search()
+            }
+            composable("favorites") {
+                Text("favorites")
             }
         }
     }
