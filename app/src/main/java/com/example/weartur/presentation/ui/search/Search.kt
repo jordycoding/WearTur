@@ -28,6 +28,8 @@ import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.wear.compose.foundation.ExperimentalWearFoundationApi
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.items
@@ -55,11 +57,13 @@ import kotlinx.coroutines.withContext
 @Composable
 fun Search(
     modifier: Modifier = Modifier,
-    viewModel: SearchViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    navController: NavHostController,
 ) {
 
     val listState = rememberScalingLazyListState()
     val search = remember { mutableStateOf("search") }
+    val viewModel = hiltViewModel<SearchViewModel>()
+
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             it.data?.let { data ->
@@ -127,8 +131,7 @@ fun Search(
                             )
                         },
                         onClick = {
-                            Toast.makeText(context, it.properties?.id ?: "", Toast.LENGTH_SHORT)
-                                .show()
+                            navController.navigate("stopdetails/${it.properties?.id ?: ""}")
                         },
                         colors = ChipDefaults.secondaryChipColors()
                     )

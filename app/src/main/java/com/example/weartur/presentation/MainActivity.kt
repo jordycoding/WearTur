@@ -16,8 +16,11 @@ import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.example.weartur.presentation.theme.WearTurTheme
 import com.example.weartur.presentation.ui.Home
+import com.example.weartur.presentation.ui.stopDetails.StopDetails
 import com.example.weartur.presentation.ui.search.Search
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +43,13 @@ fun WearApp() {
                 Home(navController = navController)
             }
             composable("search") {
-                Search()
+                Search(navController = navController)
             }
             composable("favorites") {
                 Text("favorites")
+            }
+            composable("stopdetails/{stopId}") {
+                StopDetails(stopId = it.arguments?.getString("stopId") ?: "")
             }
         }
     }

@@ -1,9 +1,12 @@
 package com.example.weartur.domain.model.geocoder
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Parcelize
 @Serializable
 data class Properties(
     @SerialName("accuracy")
@@ -44,4 +47,4 @@ data class Properties(
     val street: String? = null,
     @SerialName("tariff_zones")
     val tariffZones: List<String?>? = null
-)
+): Parcelable
