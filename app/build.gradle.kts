@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.apollographql.apollo3") version "3.8.2"
+    kotlin("plugin.serialization") version org.gradle.kotlin.dsl.embeddedKotlinVersion
 }
 
 apollo {
@@ -77,6 +78,12 @@ dependencies {
     implementation("androidx.wear:wear-input:1.2.0-alpha02")
 
     implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
+
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
