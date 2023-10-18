@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.DirectionsBus
+import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -130,10 +132,18 @@ fun Search(
                                 overflow = TextOverflow.Ellipsis
                             )
                         },
+                        icon = {
+                            if (it.properties?.layer == "address") {
+                                Icon(Icons.Rounded.Place, contentDescription = "place")
+                            } else if (it.properties?.layer == "venue") {
+                                Icon(Icons.Rounded.DirectionsBus, contentDescription = "stop")
+                            }
+                        },
                         onClick = {
                             navController.navigate("stopdetails/${it.properties?.id ?: ""}")
                         },
-                        colors = ChipDefaults.secondaryChipColors()
+                        colors = ChipDefaults.secondaryChipColors(),
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             } else {
